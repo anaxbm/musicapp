@@ -1,11 +1,22 @@
 .header {
     height: 10vh;
-    width: 60vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    //background-color: #EFDED6;
-    font-size: 4rem;
+   //background-color: #c39681;
+    font-size: 8rem;
     color: white;
+  }
+  .title{
+    width:30%;
+  }
+  .nav-links{
+    //background-color: aquamarine;
+    width: 70%;
+  }
+  .nav-links-list{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
   }
   

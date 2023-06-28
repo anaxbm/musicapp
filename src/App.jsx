@@ -15,8 +15,10 @@ function App() {
     <>
      <Header/>
      <Library currentSong= {currentSong} songs = {songs} setSongs= {setSongs}/>
+     <section className='player-musicapp'> 
       <Song currentSong= {currentSong}/>
       <Player currentSong= {currentSong}/>
+      </section>
     </>
   )
 }
