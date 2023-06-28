@@ -1,0 +1,16 @@
+.song-data {
+    //background-color:#787A91;
+    color: white;
+    width: 60vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+.song-cover {
+    height: 40rem; 
+    width: 40rem;
+    border-radius: 10px;
+}
