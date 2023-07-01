@@ -11,13 +11,14 @@ function App() {
   const [songs, setSongs] = useState(myMusic())
   const [firstSong] = songs
   const [currentSong, setCurrentSong] = useState(firstSong)
+
   return (
     <>
      <Header/>
-     <Library currentSong= {currentSong} songs = {songs} setSongs= {setSongs}/>
+     <Library currentSong= {currentSong} setCurrentSong= {setCurrentSong} songs = {songs} setSongs= {setSongs}/>
      <section className='player-musicapp'> 
       <Song currentSong= {currentSong}/>
-      <Player currentSong= {currentSong}/>
+      <Player currentSong= {currentSong} setCurrentSong= {setCurrentSong}/>
       </section>
     </>
   )

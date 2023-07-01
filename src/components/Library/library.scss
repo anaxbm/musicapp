@@ -1,11 +1,14 @@
 .library-songs{
-    height: 80vh;
-    background-color: aquamarine;
+    height: 65vh;
+    //background-color: aquamarine;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 10rem;
+    
 }
 .library-title{
     color: white;
+    font-size: 2rem;
+    padding-bottom: .5rem;
 
 }
