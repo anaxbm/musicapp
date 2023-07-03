@@ -1,12 +1,19 @@
+import { useEffect } from 'react'
 import './librarysong.scss'
 
-const LibrarySong = ({song, songs, setCurrentSong})=>{
+const LibrarySong = ({song, setCurrentSong, playCurrentSong, setPlaySong, currentSong, iconRef, playSong})=>{
     //console.log(songs)
-    const songsHandler =()=>{
-       setCurrentSong(song)
-     }
+    const songsHandler =  ()=>{
+        setCurrentSong(song) 
+    }
+
+    useEffect(()=>{
+        iconRef.current.play();
+
+    },[currentSong, playSong])
+    
     return (
-        <main className='library-song-container' onClick={()=>songsHandler(songs)}>
+        <main className='library-song-container' onClick={()=>songsHandler()}>
          <img  className= "song-cover-img" src={song.cover} alt="cover"/>
          <h3 className='song-info'>{song.name}</h3>
          <h4 className='song-info'>{song.artist}</h4>

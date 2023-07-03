@@ -9,21 +9,13 @@ import {
 import { useState, useRef } from "react";
 
 
-const Player = ({ currentSong}) => {
-  const [playSong, setPlaySong] = useState(false);
+const Player = ({ currentSong, playCurrentSong, iconRef, playSong, setPlaySong}) => {
+ 
   const [songTime, setSongTime] = useState({
     currentTime:0,
     duration: null,
   })
-
-  const iconRef = useRef(null);
-
-
-  const playCurrentSong = () => {
-    setPlaySong(true);
-    iconRef.current.play();
-    
-  };
+  
 
   const pauseCurrentSong = () => {
     setPlaySong(false);
