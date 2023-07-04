@@ -5,12 +5,12 @@ const LibrarySong = ({song, setCurrentSong, playCurrentSong, setPlaySong, curren
     //console.log(songs)
     const songsHandler =  ()=>{
         setCurrentSong(song) 
+        setPlaySong(true);
     }
 
     useEffect(()=>{
         iconRef.current.play();
-
-    },[currentSong, playSong])
+    },[currentSong])
     
     return (
         <main className='library-song-container' onClick={()=>songsHandler()}>
