@@ -6,10 +6,10 @@ import {
   faForwardStep,
   faCirclePause,
 } from "@fortawesome/free-solid-svg-icons"; // icon
-import { useState, useRef } from "react";
+import { useState} from "react";
 
 
-const Player = ({ currentSong, playCurrentSong, iconRef, playSong, setPlaySong}) => {
+const Player = ({ currentSong, playCurrentSong, iconRef, playSong, setPlaySong, songs, setCurrentSong}) => {
  
   const [songTime, setSongTime] = useState({
     currentTime:0,
@@ -44,6 +44,14 @@ const Player = ({ currentSong, playCurrentSong, iconRef, playSong, setPlaySong})
   iconRef.current.currentTime = e.target.value
  }
 
+ const fordwardSong = (direction)=>{
+  let currentIndex= songs.findIndex((song)=> song.id === currentSong.id)
+ if (direction === "skip-forward"){
+  setCurrentSong(songs[(currentIndex + 1) % songs.length])
+ }
+ else if (direction === "skip-back" && currentIndex !== 0){
+  setCurrentSong(songs[currentIndex-1])
+ }}
 
   return (
     <section className="main-player">
@@ -53,7 +61,7 @@ const Player = ({ currentSong, playCurrentSong, iconRef, playSong, setPlaySong})
         <h4>{timeToMinutes(songTime.duration)}</h4>
       </div>
       <div className="player-controls">
-        <FontAwesomeIcon icon={faBackwardStep} size="10x" />
+        <FontAwesomeIcon icon={faBackwardStep} size="10x" onClick={()=>{fordwardSong("skip-back")}}/>
         {playSong ? (
           <FontAwesomeIcon icon={faCirclePause}  onClick= {pauseCurrentSong}size="10x" />
         ) : (
@@ -63,7 +71,7 @@ const Player = ({ currentSong, playCurrentSong, iconRef, playSong, setPlaySong})
             size="10x"
           />
         )}
-        <FontAwesomeIcon icon={faForwardStep} size="10x" />
+        <FontAwesomeIcon icon={faForwardStep} size="10x" onClick={()=>{fordwardSong("skip-forward")}} />
       </div>
       <audio src={currentSong.audio} ref={iconRef} onTimeUpdate={durationHandler} onLoadedMetadata={durationHandler}></audio>
     </section>

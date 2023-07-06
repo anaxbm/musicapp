@@ -8,7 +8,7 @@ const Library = ({songs, currentSong, setCurrentSong, iconRef, playCurrentSong, 
         <section className='library-songs'>
            { songs.map( (song) =>{
             // set prop of song equal to every song object 
-            return <LibrarySong song={song}  songs= {songs} key={song.id}  currentSong={currentSong} setCurrentSong= {setCurrentSong} id= {song.id} iconRef= {iconRef} playCurrentSong= {playCurrentSong} setPlaySong= {setPlaySong} playSong= {playSong}/> })}   
+            return <LibrarySong song={song}  songs= {songs} key={song.id}  currentSong={currentSong} setCurrentSong= {setCurrentSong} id= {song.id} iconRef= {iconRef} playCurrentSong= {playCurrentSong} setPlaySong= {setPlaySong}/> })}   
         </section>
         </div>
     )

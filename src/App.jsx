@@ -13,6 +13,7 @@ function App() {
   const [currentSong, setCurrentSong] = useState(firstSong)
   const [playSong, setPlaySong] = useState(false);
   const iconRef = useRef(null);
+  const songContainer = useRef(null)
 
   const playCurrentSong = () => {
     setPlaySong(true);
@@ -22,10 +23,10 @@ function App() {
   return (
     <>
      <Header/>
-     <Library currentSong= {currentSong} setCurrentSong= {setCurrentSong} songs = {songs} setSongs= {setSongs} iconRef={iconRef} playCurrentSong= {playCurrentSong} playSong={playSong} setPlaySong={setPlaySong}/>
+     <Library currentSong= {currentSong} setCurrentSong= {setCurrentSong} songs = {songs} setSongs= {setSongs} iconRef={iconRef} playCurrentSong= {playCurrentSong} playSong={playSong} setPlaySong={setPlaySong} songContainer= {songContainer} />
      <section className='player-musicapp'> 
       <Song currentSong= {currentSong}/>
-      <Player currentSong= {currentSong} setCurrentSong= {setCurrentSong} setPlaySong= {setPlaySong} iconRef= {iconRef}  playSong= {playSong}playCurrentSong= {playCurrentSong}/>
+      <Player currentSong= {currentSong} setCurrentSong= {setCurrentSong} setPlaySong= {setPlaySong} iconRef= {iconRef}  playSong= {playSong}playCurrentSong= {playCurrentSong} songs= {songs}/>
       </section>
     </>
   )
