@@ -6,7 +6,7 @@ import {
   faForwardStep,
   faCirclePause,
 } from "@fortawesome/free-solid-svg-icons"; // icon
-import { useState} from "react";
+import { useState, useEffect, useRef} from "react";
 
 
 const Player = ({ currentSong, playCurrentSong, iconRef, playSong, setPlaySong, songs, setCurrentSong}) => {
@@ -15,6 +15,8 @@ const Player = ({ currentSong, playCurrentSong, iconRef, playSong, setPlaySong, 
     currentTime:0,
     duration: null,
   })
+
+  const playIconSong = useRef(false)
   
 
   const pauseCurrentSong = () => {
@@ -44,14 +46,30 @@ const Player = ({ currentSong, playCurrentSong, iconRef, playSong, setPlaySong, 
   iconRef.current.currentTime = e.target.value
  }
 
- const fordwardSong = (direction)=>{
+ const fordwardSong = async (direction)=>{
   let currentIndex= songs.findIndex((song)=> song.id === currentSong.id)
  if (direction === "skip-forward"){
-  setCurrentSong(songs[(currentIndex + 1) % songs.length])
+  await setCurrentSong(songs[(currentIndex + 1) % songs.length])
+  iconRef.current.play();
+  console.log("second render")
+    setPlaySong(true)
  }
  else if (direction === "skip-back" && currentIndex !== 0){
-  setCurrentSong(songs[currentIndex-1])
+  await setCurrentSong(songs[currentIndex-1])
+  iconRef.current.play();
+  console.log("back")
  }}
+
+ useEffect(
+  ()=>{
+    if (playIconSong.current){
+      fordwardSong()
+    }
+    else {
+      playCurrentSong.current= true;
+    }
+  }, [currentSong]
+ )
 
   return (
     <section className="main-player">

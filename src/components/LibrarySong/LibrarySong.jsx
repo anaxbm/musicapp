@@ -2,8 +2,7 @@ import { useEffect, useRef } from 'react'
 import './librarysong.scss'
 
 const LibrarySong = ({song, setCurrentSong, setPlaySong, iconRef})=>{
-    //console.log(songs)
-    //cuándo hagan click a songContainer ejecute el setPlaySong a true y play
+    
     const songsHandler =  async ()=>{
         await setCurrentSong(song) 
         setPlaySong(true);
