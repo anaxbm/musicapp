@@ -76,7 +76,9 @@ const Player = ({ currentSong, playCurrentSong, iconRef, playSong, setPlaySong, 
       <div className="play-song-control">
         <h4>{timeToMinutes(songTime.currentTime)}</h4>
         <input className="input-range" type="range" min={0} max={songTime.duration} value={songTime.currentTime} onChange={draggingSong}/>
-        <h4>{timeToMinutes(songTime.duration)}</h4>
+        <h4> { currentSong ?
+        timeToMinutes(songTime.duration) : "0:00"
+      }</h4>
       </div>
       <div className="player-controls">
         <FontAwesomeIcon icon={faBackwardStep} size="10x" onClick={()=>{fordwardSong("skip-back")}}/>
